@@ -22,7 +22,7 @@ $AlreadyPlayed = ((Invoke-WebRequest https://radio-api.mediaworks.nz/comp-api/v1
 foreach ($track in $AlreadyPlayed) {
     $song = "$($track.artist) - $($track.title)"
     if ($MyVotes -match $song) {
-        "`"$song`" played at $($track.timestamp). Number $($track.rank)."
+        "`"$song`" played at $($track.timestamp), number $($track.rank)."
     }
 
 }
