@@ -21,3 +21,6 @@ foreach ($track in $candidates) {
 
 
 $possibles |Format-Table -AutoSize rank,artist, title
+"Candidates remaining: $($possibles.count)"
+$soonest = [int]$possibles[-1].rank - $jump
+"Soonest possible candiate is #$soonest`: `"$($possibles[-1].title) - $($possibles[-1].artist)`""
