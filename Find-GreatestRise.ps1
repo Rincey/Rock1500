@@ -19,8 +19,12 @@ foreach ($track in $candidates) {
     }
 }
 
-
+$soonest = [int]$possibles[-1].rank - $jump
+if ($soonest -lt [int]$AlreadyPlayed[0].rank) {
+    #eliminate more
+}
 $possibles |Format-Table -AutoSize rank,artist, title
 "Candidates remaining: $($possibles.count)"
-$soonest = [int]$possibles[-1].rank - $jump
-"Soonest possible candiate is #$soonest`: `"$($possibles[-1].title) - $($possibles[-1].artist)`""
+
+"Soonest possible candiate is #$soonest`: `"$($possibles[-1].artist) - $($possibles[-1].title)`""
+"Countdown currently at #$($AlreadyPlayed[0].rank)"
