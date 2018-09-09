@@ -26,5 +26,8 @@ if ($soonest -lt [int]$AlreadyPlayed[0].rank) {
 $possibles |Format-Table -AutoSize rank,artist, title
 "Candidates remaining: $($possibles.count)"
 
-"Soonest possible candiate is #$soonest`: `"$($possibles[-1].artist) - $($possibles[-1].title)`""
+"Soonest possible candidate is #$soonest`: `"$($possibles[-1].artist) - $($possibles[-1].title)`""
 "Countdown currently at #$($AlreadyPlayed[0].rank)"
+"Next 4 after soonest candidate:"
+"(Last Year Rank): (Artist) - (Title)"
+$possibles[-2..-5] | ForEach-Object {"$($_.rank): $($_.artist) - $($_.title)"}
