@@ -21,7 +21,7 @@ foreach ($track in $candidates) {
 
 $soonest = [int]$possibles[-1].rank - $jump
 if ($soonest -lt [int]$AlreadyPlayed[0].rank) {
-    #eliminate more
+    #eliminate moregit 
 }
 $possibles |Format-Table -AutoSize rank,artist, title
 "Candidates remaining: $($possibles.count)"
