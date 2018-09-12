@@ -15,6 +15,7 @@ $MyVotes = @(
     "Five Finger Death Punch - Jekyll and Hyde",
     "Lynyrd Skynyrd - Free Bird"
 )
+$lastYear = Import-Csv ".\Full 2017.csv"
 
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 $AlreadyPlayed = ((Invoke-WebRequest https://radio-api.mediaworks.nz/comp-api/v1/countdown/therock -UseBasicParsing).content | convertfrom-json)
@@ -22,7 +23,14 @@ $AlreadyPlayed = ((Invoke-WebRequest https://radio-api.mediaworks.nz/comp-api/v1
 foreach ($track in $AlreadyPlayed) {
     $song = "$($track.artist) - $($track.title)"
     if ($MyVotes -match $song) {
-        "`"$song`" played at $($track.timestamp), number $($track.rank)."
+        $oldrank = "didn't place"
+        foreach ($oldtrack in $lastYear) {
+            if (($oldTrack.artist -eq $track.artist) -and ($oldTrack.title -eq $track.title)) {
+                $oldrank = "was number $($oldtrack.rank)"
+            }
+        }
+
+        "`"$song`" played at $($track.timestamp), number $($track.rank). Last year it $oldrank"
     }
 
 }
