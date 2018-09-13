@@ -14,15 +14,13 @@ foreach ($track in $candidates) {
             $flag = $true
         }
     }
-    if (!($flag)) {
+    if (!($flag) -and ([int]$apTrack.rank -ge [int]$track.rank-$jump)) {
         $possibles += $track
     }
 }
 
 $soonest = [int]$possibles[-1].rank - $jump
-if ($soonest -lt [int]$AlreadyPlayed[0].rank) {
-    #eliminate moregit 
-}
+
 $possibles |Format-Table -AutoSize rank,artist, title
 "Candidates remaining: $($possibles.count)"
 
