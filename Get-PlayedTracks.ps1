@@ -30,7 +30,11 @@ foreach ($track in $AlreadyPlayed) {
             }
         }
 
-        "`"$song`" played at $($track.timestamp), number $($track.rank). Last year it $oldrank"
+        "`"$song`"
+        Played at $($track.timestamp)
+        Number $($track.rank)
+        Last year it $oldrank
+        "
     }
 
 }
