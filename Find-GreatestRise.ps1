@@ -14,7 +14,7 @@ foreach ($track in $candidates) {
             $flag = $true
         }
     }
-    if (!($flag) -and ([int]$apTrack.rank -ge [int]$track.rank-$jump)) {
+    if (!($flag) -and ([int]$AlreadyPlayed[0].rank -gt [int]$track.rank-$jump)) {
         $possibles += $track
     }
 }
