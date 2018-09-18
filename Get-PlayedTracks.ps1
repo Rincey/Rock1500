@@ -19,7 +19,7 @@ $lastYear = Import-Csv ".\Full 2017.csv"
 
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 $AlreadyPlayed = ((Invoke-WebRequest https://radio-api.mediaworks.nz/comp-api/v1/countdown/therock -UseBasicParsing).content | convertfrom-json)
-
+$count =0 
 foreach ($track in $AlreadyPlayed) {
     $song = "$($track.artist) - $($track.title)"
     if ($MyVotes -match $song) {
@@ -27,6 +27,7 @@ foreach ($track in $AlreadyPlayed) {
         foreach ($oldtrack in $lastYear) {
             if (($oldTrack.artist -eq $track.artist) -and ($oldTrack.title -eq $track.title)) {
                 $oldrank = "was number $($oldtrack.rank)"
+                
             }
         }
 
@@ -35,6 +36,8 @@ foreach ($track in $AlreadyPlayed) {
         Number $($track.rank)
         Last year it $oldrank
         "
+        $count += 1
     }
 
 }
+"Tracks gone: $count"
