@@ -1,11 +1,14 @@
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 
-$N = 500
+$N = 100
 $AlreadyPlayed = ((Invoke-WebRequest https://radio-api.mediaworks.nz/comp-api/v1/countdown/therock -UseBasicParsing).content | convertfrom-json)
 $lastYear = Import-Csv ".\Full 2017.csv"
 
 $candidates = $lastyear[0..($N - 1)] 
 $count = 0
+"Top $N from last year already played
+
+(last year) this year: Artist - Title"
 
 foreach ($track in $candidates) {
     foreach ($apTrack in $AlreadyPlayed) {
