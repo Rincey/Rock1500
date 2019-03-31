@@ -22,7 +22,7 @@ foreach ($track in $Rock1500_2018) {
     }
     Do {
         $choice = Read-Host "Select track to add to playlist" 
-    } while (!(($choice -gt 0) -and ($choice -lt $index)))
+    } while (!($choice -in 0..$spotifyTracks.length))
     
     $spotifyTracks[$choice]
     #Add-SpotifyTracktoPlaylist -Id $playlist.Id -Tracks $spotifyTracks[$choice].uri
