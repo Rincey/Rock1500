@@ -49,7 +49,7 @@ Please Google for 'ffmpeg for windows' and download into your PATH (eg C:\window
     else {
     Write-Host "`tYouTube-DL not found.
 Downloading of videos not possible
-Please Google for 'youtube-dl for windows' and download into your PATH (eg C:\windows\system32).
+Please Google for 'youtube-dl for windows' and download into your PATH (dont use C:\windows\system32 on Win10 though).
 (Try https://rg3.github.io/youtube-dl/download.html)" -ForegroundColor Red
     exit
     }
