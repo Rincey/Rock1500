@@ -16,7 +16,7 @@ $line.artist = "Metallica"
  $a = ($web.Links |?{($_.href -like '*/watch?v=*') -and 
       ($_.href -notlike '*list=*') -and
       (($_.innerText -like "*official*") -or ($_.innerText -notlike "*album*")) -and
-      ($_.innerText -notlike "*:*") -and
+      ($_.innerHTML -notlike "*yt-thumb video-thumb*") -and
       ($_.innerText -notlike "*lyrics*")})
       }
     else
@@ -24,7 +24,7 @@ $line.artist = "Metallica"
  $a = ($web.Links |?{($_.href -like '*/watch?v=*') -and 
       ($_.href -notlike '*list=*') -and
       (($_.innerText -like "*official*") -or ($_.innerText -notlike "*album*")) -and
-      ($_.innerText -notlike "*:*") -and
+      ($_.innerHTML -notlike "*yt-thumb video-thumb*") -and
       ($_.innerText -notlike "*lyrics*") -and
       ($_.innerText -notlike "*cover*")})
     }         
