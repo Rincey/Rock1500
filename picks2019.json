@@ -1,0 +1,129 @@
+{
+    "picks": {
+        "1": [
+            {
+                "artist": "Metallica",
+                "song": "Master Of Puppets"
+            },
+            {
+                "artist": "Slayer",
+                "song": "Raining Blood"
+            },
+            {
+                "artist": "Black Sabbath",
+                "song": "N.I.B."
+            },
+            {
+                "artist": "Led Zeppelin",
+                "song": "Achilles Last Stand"
+            },
+            {
+                "artist": "Metallica",
+                "song": "The Outlaw Torn"
+            },
+            {
+                "artist": "Soundgarden",
+                "song": "Rusty Cage"
+            },
+            {
+                "artist": "Johnny Cash",
+                "song": "Hurt"
+            },
+            {
+                "artist": "Five Finger Death Punch",
+                "song": "Jekyll And Hyde"
+            },
+            {
+                "artist": "Foo Fighters",
+                "song": "Baker Steet"
+            },
+            {
+                "artist": "Iron Maiden",
+                "song": "Run To The Hills"
+            },
+            {
+                "artist": "Korn",
+                "song": "Twisted Transistor"
+            },
+            {
+                "artist": "Pantera",
+                "song": "Cemetery Gates"
+            },
+            {
+                "artist": "Pantera",
+                "song": "Walk"
+            },
+            {
+                "artist": "Tool",
+                "song": "Lateralus"
+            },
+            {
+                "artist": "Slipknot",
+                "song": "Duality"
+            }
+        ],
+        "2":
+        [
+            {
+                "artist": "Shihad",
+                "song": "I Only Said"
+            },
+            {
+                "artist": "Shihad",
+                "song": "You Again"
+            },  
+            {
+                "artist": "Slayer",
+                "song": "Seasons in the Abyss"
+            },  
+            {
+                "artist": "Led Zeppelin",
+                "song": "Immigrant Song"
+            },  
+            {
+                "artist": "Tool",
+                "song": "Fear Innoculum"
+            },  
+            {
+                "artist": "Black Sabbath",
+                "song": "Fairies Wear Boots"
+            },  
+            {
+                "artist": "Black Sabbath",
+                "song": "Sabbath Bloody Sabbath"
+            },  
+            {
+                "artist": "Black Sabbath",
+                "song": "The Wizard"
+            },  
+            {
+                "artist": "Metallica",
+                "song": "Orion"
+            },  
+            {
+                "artist": "Metallica",
+                "song": "Breadfan"
+            },  
+            {
+                "artist": "Five Finger Death Punch",
+                "song": "Wash It Away"
+            },  
+            {
+                "artist": "Lynyrd Skynyrd",
+                "song": "Free Bird"
+            },  
+            {
+                "artist": "Megadeth",
+                "song": "Peace Sells But Who's Buying"
+            },  
+            {
+                "artist": "Probot",
+                "song": "Red War (Feat Max Cavalera)"
+            },  
+            {
+                "artist": "Probot/Motorhead",
+                "song": "Shake Your Blood"
+            }
+        ]
+    }
+}
