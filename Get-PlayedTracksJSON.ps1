@@ -1,29 +1,26 @@
 $MyVotes = get-content .\picks2019.json | ConvertFrom-Json
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 $AlreadyPlayed = ((Invoke-WebRequest https://radio-api.mediaworks.nz/comp-api/v1/countdown/therock -UseBasicParsing).content | convertfrom-json)
-$count =0 
-$Sets = $myvotes.picks | gm | ?{$_.}
-foreach ($VoteSet in $myvotes.picks) {
+$count = 0 
+$Sets = ($myvotes.picks | Get-Member | Where-Object { $_.membertype -eq 'NoteProperty' }).Name
+foreach ($VoteSet in $Sets) {
+"Vote Set #$($VoteSet):"
+    foreach ($track in $AlreadyPlayed) {
+        $song = "" | Select-Object artist, title
+        $song.artist = $track.artist
+        $song.title = $track.title
 
-foreach ($track in $AlreadyPlayed) {
-    $song = "$($track.artist) - $($track.title)"
-    if ($MyVotes -match $song) {
-        $oldrank = "didn't place"
-        foreach ($oldtrack in $lastYear) {
-            if (($oldTrack.artist -eq $track.artist) -and ($oldTrack.title -eq $track.title)) {
-                $oldrank = "was number $($oldtrack.rank)"
-                
-            }
+        if ($MyVotes.picks.$VoteSet -match $song) {
+        
+
+            "`"$($song.artist) - $($song.title)`"
+Played at $($track.timestamp)
+Number $($track.rank)
+        "
+            $count += 1
         }
 
-        "`"$song`"
-        Played at $($track.timestamp)
-        Number $($track.rank)
-        Last year it $oldrank
-        "
-        $count += 1
     }
-
-}
-"Tracks gone in Set $($MyVotes.picks): $count"
+    "Tracks gone in Set $($voteset): $count"
+    $count = 0
 }

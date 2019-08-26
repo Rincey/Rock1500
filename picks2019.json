@@ -3,126 +3,126 @@
         "1": [
             {
                 "artist": "Metallica",
-                "song": "Master Of Puppets"
+                "title": "Master Of Puppets"
             },
             {
                 "artist": "Slayer",
-                "song": "Raining Blood"
+                "title": "Raining Blood"
             },
             {
                 "artist": "Black Sabbath",
-                "song": "N.I.B."
+                "title": "N.I.B."
             },
             {
                 "artist": "Led Zeppelin",
-                "song": "Achilles Last Stand"
+                "title": "Achilles Last Stand"
             },
             {
                 "artist": "Metallica",
-                "song": "The Outlaw Torn"
+                "title": "The Outlaw Torn"
             },
             {
                 "artist": "Soundgarden",
-                "song": "Rusty Cage"
+                "title": "Rusty Cage"
             },
             {
                 "artist": "Johnny Cash",
-                "song": "Hurt"
+                "title": "Hurt"
             },
             {
                 "artist": "Five Finger Death Punch",
-                "song": "Jekyll And Hyde"
+                "title": "Jekyll And Hyde"
             },
             {
                 "artist": "Foo Fighters",
-                "song": "Baker Steet"
+                "title": "Baker Steet"
             },
             {
                 "artist": "Iron Maiden",
-                "song": "Run To The Hills"
+                "title": "Run To The Hills"
             },
             {
                 "artist": "Korn",
-                "song": "Twisted Transistor"
+                "title": "Twisted Transistor"
             },
             {
                 "artist": "Pantera",
-                "song": "Cemetery Gates"
+                "title": "Cemetery Gates"
             },
             {
                 "artist": "Pantera",
-                "song": "Walk"
+                "title": "Walk"
             },
             {
                 "artist": "Tool",
-                "song": "Lateralus"
+                "title": "Lateralus"
             },
             {
                 "artist": "Slipknot",
-                "song": "Duality"
+                "title": "Duality"
             }
         ],
         "2":
         [
             {
                 "artist": "Shihad",
-                "song": "I Only Said"
+                "title": "I Only Said"
             },
             {
                 "artist": "Shihad",
-                "song": "You Again"
+                "title": "You Again"
             },  
             {
                 "artist": "Slayer",
-                "song": "Seasons in the Abyss"
+                "title": "Seasons in the Abyss"
             },  
             {
                 "artist": "Led Zeppelin",
-                "song": "Immigrant Song"
+                "title": "Immigrant Song"
             },  
             {
                 "artist": "Tool",
-                "song": "Fear Innoculum"
+                "title": "Fear Innoculum"
             },  
             {
                 "artist": "Black Sabbath",
-                "song": "Fairies Wear Boots"
+                "title": "Fairies Wear Boots"
             },  
             {
                 "artist": "Black Sabbath",
-                "song": "Sabbath Bloody Sabbath"
+                "title": "Sabbath Bloody Sabbath"
             },  
             {
                 "artist": "Black Sabbath",
-                "song": "The Wizard"
+                "title": "The Wizard"
             },  
             {
                 "artist": "Metallica",
-                "song": "Orion"
+                "title": "Orion"
             },  
             {
                 "artist": "Metallica",
-                "song": "Breadfan"
+                "title": "Breadfan"
             },  
             {
                 "artist": "Five Finger Death Punch",
-                "song": "Wash It Away"
+                "title": "Wash It Away"
             },  
             {
                 "artist": "Lynyrd Skynyrd",
-                "song": "Free Bird"
+                "title": "Free Bird"
             },  
             {
                 "artist": "Megadeth",
-                "song": "Peace Sells But Who's Buying"
+                "title": "Peace Sells But Who's Buying"
             },  
             {
                 "artist": "Probot",
-                "song": "Red War (Feat Max Cavalera)"
+                "title": "Red War (Feat Max Cavalera)"
             },  
             {
                 "artist": "Probot/Motorhead",
-                "song": "Shake Your Blood"
+                "title": "Shake Your Blood"
             }
         ]
     }
