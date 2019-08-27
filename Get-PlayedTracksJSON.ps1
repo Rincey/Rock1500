@@ -5,7 +5,7 @@ $count = 0
 $Sets = ($myvotes.picks | Get-Member | Where-Object { $_.membertype -eq 'NoteProperty' }).Name
 foreach ($VoteSet in $Sets) {
 "
-Vote Set #$($VoteSet):"
+Vote Set '$($VoteSet)':"
     foreach ($track in $AlreadyPlayed) {
         $song = "" | Select-Object artist, title
         $song.artist = $track.artist
@@ -22,6 +22,6 @@ Number $($track.rank)
         }
 
     }
-    "Tracks gone in Set $($voteset): $count"
+    "Tracks gone in Set '$($voteset)': $count"
     $count = 0
 }

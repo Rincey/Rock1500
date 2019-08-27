@@ -1,6 +1,6 @@
 {
     "picks": {
-        "1": [
+        "Scott's Picks #1": [
             {
                 "artist": "Metallica",
                 "title": "Master Of Puppets"
@@ -62,7 +62,7 @@
                 "title": "Duality"
             }
         ],
-        "2":
+        "Scott's Picks #2":
         [
             {
                 "artist": "Shihad",
@@ -121,7 +121,7 @@
                 "title": "Red War (Feat Max Cavalera)"
             },  
             {
-                "artist": "Probot/Motorhead",
+                "artist": "Probot",
                 "title": "Shake Your Blood"
             }
         ]
