@@ -15,7 +15,7 @@ Vote Set '$($VoteSet)':"
         
 
             "`"$($song.artist) - $($song.title)`"
-Played at $($track.timestamp)
+Played at $($track.timestamp.split(" ")[1]) on $($track.timestamp.split(" ")[0])
 Number $($track.rank)
         "
             $count += 1
