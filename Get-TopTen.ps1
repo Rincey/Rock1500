@@ -5,8 +5,8 @@ param (
 )
 
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
-$rawcountdown = ((Invoke-WebRequest https://radio-api.mediaworks.nz/comp-api/v1/countdown/therock -UseBasicParsing).content | 
-    convertfrom-json)
+$rawcountdown = (Invoke-WebRequest https://radio-api.mediaworks.nz/comp-api/v1/countdown/therock -UseBasicParsing).content | 
+    ConvertFrom-Json
 
 if ($total) {
     
@@ -36,9 +36,10 @@ if ($cumulative) {
     
     $newcountdown = $rawcountdown | Select-Object *, @{n = 'date'; e = { $_.timestamp.split(" ")[0] } } | Sort-Object date | Group-Object date
     $topten = @()
+    $cumulativeCountdown = @()
     foreach ($countdown in $newcountdown) {
-
-        $topTen = $topten + $countdown.group |
+        $cumulativeCountdown = $cumulativeCountdown + $countdown.Group
+        $topTen = $cumulativeCountdown |
         Group-Object artist |
         sort-object count -Descending
 
