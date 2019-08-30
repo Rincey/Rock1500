@@ -4,7 +4,7 @@ $AlreadyPlayed = ((Invoke-WebRequest https://radio-api.mediaworks.nz/comp-api/v1
 $count = 0 
 $Sets = ($myvotes.picks | Get-Member | Where-Object { $_.membertype -eq 'NoteProperty' }).Name
 foreach ($VoteSet in $Sets) {
-"
+    "
 Vote Set '$($VoteSet)':"
     foreach ($track in $AlreadyPlayed) {
         $song = "" | Select-Object artist, title
@@ -22,6 +22,12 @@ Number $($track.rank)
         }
 
     }
-    "Tracks gone in Set '$($voteset)': $count"
+    if ($count -eq 0) {
+        "None gone in '$($voteset)'"
+    }
+    else {
+        "Tracks gone in Set '$($voteset)': $count"
+    }
     $count = 0
+    "---------------------------------"
 }
