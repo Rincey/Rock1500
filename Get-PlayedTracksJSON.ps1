@@ -37,7 +37,7 @@ $countdownday = Get-TotalWeekDays -Start "2019-08-25" -End $($track.timestamp.sp
             "`"$($song.artist) - $($song.title)`"
 Played at $($track.timestamp.split(" ")[1]) on $($track.timestamp.split(" ")[0]) (Day $countdownday)
 Number $($track.rank)
-        "
+-----------"
             $count += 1
         }
 
