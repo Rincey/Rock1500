@@ -49,5 +49,5 @@ Number $($track.rank)
         "Tracks gone in Set '$($voteset)': $count"
     }
     $count = 0
-    "---------------------------------"
+    "================================"
 }
