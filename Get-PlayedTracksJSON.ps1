@@ -18,12 +18,14 @@ Function Get-TotalWeekDays {
     return    $i
 } 
 
-$MyVotes = get-content .\picks2019.json | ConvertFrom-Json
+$MyVotes = get-content .\picks2019.json | ConvertFrom-Json 
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 $AlreadyPlayed = ((Invoke-WebRequest https://radio-api.mediaworks.nz/comp-api/v1/countdown/therock -UseBasicParsing).content | convertfrom-json)
 $count = 0 
 $Sets = ($myvotes.picks | Get-Member | Where-Object { $_.membertype -eq 'NoteProperty' }).Name
 foreach ($VoteSet in $Sets) {
+    $VoteSetPlayed = @()
+    
     "
 Vote Set '$($VoteSet)':"
     foreach ($track in $AlreadyPlayed) {
@@ -32,7 +34,7 @@ Vote Set '$($VoteSet)':"
         $song.title = $track.title
 
         if ($MyVotes.picks.$VoteSet -match $song) {
-        
+$VoteSetPlayed += $song
 $countdownday = Get-TotalWeekDays -Start "2019-08-25" -End $($track.timestamp.split(" ")[0])
             "`"$($song.artist) - $($song.title)`"
 Played at $($track.timestamp.split(" ")[1]) on $($track.timestamp.split(" ")[0]) (Day $countdownday)
@@ -48,6 +50,8 @@ Number $($track.rank)
     else {
         "Tracks gone in Set '$($voteset)': $count"
     }
+    "Remaining:"
+    $MyVotes.picks.$VoteSet | Where-Object{$_ -notin $VoteSetPlayed}
     $count = 0
     "================================"
 }
