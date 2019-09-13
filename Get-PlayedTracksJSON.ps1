@@ -51,7 +51,10 @@ Number $($track.rank)
         "Tracks gone in Set '$($voteset)': $count"
     }
     "Remaining:"
-    $MyVotes.picks.$VoteSet | Where-Object{$_ -notin $VoteSetPlayed}
+    $AdjustedVoteSet = $MyVotes.picks.$VoteSet | Select-Object *,@{n='ArtistTitle';e={"$($_.Artist) - $($_.title)"}}
+    $AdjustedVoteSetPlayed = $VoteSetPlayed | Select-Object *,@{n='ArtistTitle';e={"$($_.Artist) - $($_.title)"}}
+    Compare-Object -ReferenceObject $AdjustedVoteSet.ArtistTitle -DifferenceObject $AdjustedVoteSetPlayed.ArtistTitle -PassThru
     $count = 0
     "================================"
 }
+

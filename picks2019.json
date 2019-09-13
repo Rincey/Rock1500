@@ -82,7 +82,7 @@
             },  
             {
                 "artist": "Tool",
-                "title": "Fear Innoculum"
+                "title": "Fear Inoculum"
             },  
             {
                 "artist": "Black Sabbath",
@@ -106,7 +106,7 @@
             },  
             {
                 "artist": "Five Finger Death Punch",
-                "title": "Wash It Away"
+                "title": "Wash It All Away"
             },  
             {
                 "artist": "Lynyrd Skynyrd",
@@ -123,69 +123,6 @@
             {
                 "artist": "Probot",
                 "title": "Shake Your Blood"
-            }
-        ],
-        "James Patterson's Picks #1":
-        [
-            {
-                "artist": "Slipknot",
-                "title": "Before I Forget"
-            },
-            {
-                "artist": "Limp Bizkit",
-                "title": "Nookie"
-            },  
-            {
-                "artist": "Shihad",
-                "title": "Home Again"
-            },  
-            {
-                "artist": "Tool",
-                "title": "Forty Six and Two"
-            },  
-            {
-                "artist": "Tool",
-                "title": "Stinkfist"
-            },  
-            {
-                "artist": "Alice In Chains",
-                "title": "The One You Know"
-            },  
-            {
-                "artist": "Lamb Of God",
-                "title": "Redneck"
-            },  
-            {
-                "artist": "Lamb of God",
-                "title": "Set To Fail"
-            },  
-            {
-                "artist": "Lamb Of God",
-                "title": "Laid To Rest"
-            },  
-            {
-                "artist": "Lamb Of God",
-                "title": "Walk With Me In Hell"
-            },  
-            {
-                "artist": "Marilyn Manson",
-                "title": "Deep Six"
-            },  
-            {
-                "artist": "Marilyn Manson",
-                "title": "No Reflection"
-            },  
-            {
-                "artist": "Marilyn Manson",
-                "title": "Heaven Upside Down"
-            },  
-            {
-                "artist": "Slipknot",
-                "title": "Duality"
-            },  
-            {
-                "artist": "Alice In Chains",
-                "title": "Would?"
             }
         ]
     }
