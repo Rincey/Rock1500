@@ -11,14 +11,6 @@ ConvertFrom-Json
 
 $countdown = $rawcountdown | Select-Object *,@{n='Change';e={$_.rankOneYearAgo - $_.rank}}
 
-"
-Biggest Gains"
-$countdown | Sort-Object change -Descending | Select-Object -First 10 rank,title,artist,change
-
-"
-Biggest Losers"
-$countdown | Sort-Object change  | Select-Object -First 10 rank,title,artist,change
-
-"
-No Change"
-$countdown | Where-Object{$_.change -eq 0} | Select-Object rank,title,artist
+$countdown | Sort-Object change -Descending | Select-Object -First 10 rank,title,artist,change | Out-GridView -Title "Biggest Gains"
+$countdown | Sort-Object change  | Select-Object -First 10 rank,title,artist,change | Out-GridView -Title "Biggest Losers"
+$countdown | Where-Object{$_.change -eq 0} | Select-Object rank,title,artist | Out-GridView -Title "No Change"
