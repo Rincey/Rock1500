@@ -208,3 +208,21 @@ $Bytes = $MemoryStream.ToArray()
 $MemoryStream.Flush()
 $MemoryStream.Dispose()
 
+$imgB64 = [convert]::ToBase64String($Bytes)
+
+$testhtml = @"
+<html><head><title>Test bitmap</title></head>
+<body>
+<img src="data:image/png;base64,$imgB64">
+</body>
+</html>
+"@
+
+
+if ($PSScriptRoot) {
+    $reportfolder = $PSScriptRoot
+}
+else {
+    $reportfolder = $psEditor.GetEditorContext().CurrentFile.Path.replace($psEditor.GetEditorContext().CurrentFile.Path.split("\")[-1], "")
+}
+$testhtml | Out-File "$reportfolder\testgraphic.html"
