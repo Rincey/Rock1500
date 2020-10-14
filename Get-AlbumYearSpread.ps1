@@ -7,13 +7,14 @@ $hash = @{}
 foreach ($track in $AlreadyPlayed) {
     $year = $track.albumyear
     if ($hash.ContainsKey($year)) {
-            $hash.$year += 1
-        } else {
-            $hash.$year = 1
-        }
+        $hash.$year += 1
+    }
+    else {
+        $hash.$year = 1
+    }
 }
 
-$data = $hash.GetEnumerator() | Sort-Object name 
+$data = $hash.GetEnumerator() | Where-Object name -ne '' | Sort-Object name 
 
 Add-Type -AssemblyName System.Drawing
 
@@ -68,15 +69,14 @@ $graphics.DrawLine(
 
 
 #draw Y axis values & tick marks
-$yTick = 2
+$yStep = 5
 
 $maxYvalue = ($data.value | Measure-Object  -Maximum).Maximum
-$maxYvalue = $maxYvalue + ($yTick - ($maxYvalue % $yTick))
+$maxYvalue = $maxYvalue + ($yStep - ($maxYvalue % $ystep))
 
-$minYvalue = ($data.value | Measure-Object  -Minimum).Minimum
-$minYvalue = $minYvalue - ($minYvalue % $yTick)
+$minYvalue = 0
 
-$yStep = 5
+
 for ($i = 0; $i -le $yStep; $i++) {
     $graphics.DrawString(
         [int]($minYvalue + $i * ($maxYvalue - $minYvalue) / $yStep), 
@@ -95,7 +95,31 @@ for ($i = 0; $i -le $yStep; $i++) {
         [int](($bmp.Height - $xAxisSize.Width) - $i * ($bmp.Height - $xAxisSize.Width - $titleSize.Height) / $yStep)
     )
 }
+$textBmp = new-object System.Drawing.Bitmap 100, 50 
+$textGraphics = [System.Drawing.Graphics]::FromImage($textbmp) 
+$textGraphics.DrawString(
+    "1980",
+    $axisFont,
+    $brushFg,
+    0,
+    0
+)
+$textGraphics.rotatetransform(270)
+$graphics.DrawImage($textBmp,500,100)
 
+<#
+[single]$pointWidth = 4
+[single]$pointHeight = $pointWidth
+$graphics.DrawEllipse(
+    $currPen,
+    [single]500 - $pointWidth / 2,
+    [single]100 - $pointHeight / 2,
+    [single]$pointWidth,
+    [single]$pointHeight
+)
+#>
+# REWORK HERE. COLUMNS NOT POINTS
+#  
 
 #get date string into datetime & reverse order (oldest first) of data
 #foreach ($secureScore in $secureScores) {
@@ -112,7 +136,8 @@ $xRange = $maxXvalue - $minXvalue
 #
 # THIS SECTION NEEDS REWORK - HISTOGRAM NOW, NOT TIME SERIES
 #
-$xStep = 2
+$xStep = 10
+
 $i = 0
 $xLabel = $minXvalue + ($i * $xRange / $xStep) 
 $graphics.DrawString(
@@ -130,8 +155,8 @@ $graphics.DrawLine(
     $bmp.Height - $xAxisSize.width + 4
 )
     
-$i++
-$xLabel = get-date $minXvalue.AddDays($i * $xRange / $xStep) -Format "dd-MM-yyyy"
+
+$xLabel = $minXvalue + ($i * $xRange / $xStep) 
 $graphics.DrawString(
     $xlabel, 
     $axisfont, 
@@ -148,8 +173,26 @@ $graphics.DrawLine(
     $bmp.Height - $xAxisSize.width + 4
 )
 
-$i++
-$xLabel = get-date $minXvalue.AddDays($i * $xRange / $xStep) -Format "dd-MM-yyyy"
+for ($i = 1; $i -le ($xStep - 1); $i++) {
+    $xLabel = $minXvalue + ($i * $xRange / $xStep) 
+    $graphics.DrawString(
+        $xlabel, 
+        $axisfont, 
+        $brushFg, 
+        [int](($yAxisSize.Width + $i * ($bmp.Width - 10 - $yAxisSize.Width - $y2AxisSize.width) / $xStep) `
+                - [System.Windows.Forms.TextRenderer]::MeasureText($xLabel, $axisFont).width), 
+        [int](($bmp.Height - $xAxisSize.Width) + 10)
+    )
+    $graphics.DrawLine(
+        $pen, 
+        [int]($yAxisSize.Width + $i * ($bmp.Width - 10 - $yAxisSize.Width - $y2AxisSize.width) / $xStep), 
+        $bmp.Height - $xAxisSize.width - 4, 
+        [int]($yAxisSize.Width + $i * ($bmp.Width - 10 - $yAxisSize.Width - $y2AxisSize.width) / $xStep), 
+        $bmp.Height - $xAxisSize.width + 4
+    )
+}
+$i = $xStep
+$xLabel = $minXvalue + ($i * $xRange / $xStep) 
 $graphics.DrawString(
     $xlabel, 
     $axisfont, 
@@ -166,7 +209,6 @@ $graphics.DrawLine(
     $bmp.Height - $xAxisSize.width + 4
 )
 
-
 $currPen = New-Object System.Drawing.Pen $brushRed, 1
 
 
@@ -181,9 +223,9 @@ foreach ($item in $data) {
     [single]$pointWidth = 4
     [single]$pointHeight = $pointWidth
 
-  #
-  # REWORK HERE. COLUMNS NOT POINTS
-  #  
+    #
+    # REWORK HERE. COLUMNS NOT POINTS
+    #  
     $graphics.DrawEllipse(
         $currPen,
         [single]$xPos - $pointWidth / 2,
