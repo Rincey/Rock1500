@@ -12,7 +12,7 @@ $brushBlue = [System.Drawing.Brushes]::Blue
 $graphTitle = "Album Year Spread"
 $titleSize = [System.Windows.Forms.TextRenderer]::MeasureText($graphTitle, $font)
 $pen = New-Object System.Drawing.Pen $brushFg, 2
-$axisFontSize = 16 
+$axisFontSize = 12 
 $axisFont = new-object System.Drawing.Font Arial, $axisFontSize 
 $yAxisSize = [System.Windows.Forms.TextRenderer]::MeasureText("888", $axisFont)
 $xAxisSize = [System.Windows.Forms.TextRenderer]::MeasureText("8888", $axisFont)
@@ -51,29 +51,30 @@ $graphics.DrawLine(
 
 
 # new text stuff
-$minXvalue = 1965
-$maxXvalue = 2020
-for($label=$minXvalue;$label -le $maxXvalue;$label++){
-$labelH = [System.Windows.Forms.TextRenderer]::MeasureText($label, $axisFont).Height
-$labelW = [System.Windows.Forms.TextRenderer]::MeasureText($label, $axisFont).width
-$textBmp = new-object System.Drawing.Bitmap $labelH, $labelW 
-$textGraphics = [System.Drawing.Graphics]::FromImage($textbmp) 
-#$textgraphics.TranslateTransform($labelH,0)
-$textGraphics.RotateTransform(90)
+$minXvalue = 1965 - 1
+$maxXvalue = 2020 + 1
 
-$textGraphics.DrawString(
-    $label,
-    $axisFont,
-    $brushFg,
-    0,
-    -$labelH
-)
+for ($label = $minXvalue; $label -lt $maxXvalue; $label+=2) {
+    $labelH = [System.Windows.Forms.TextRenderer]::MeasureText($label, $axisFont).Height
+    $labelW = [System.Windows.Forms.TextRenderer]::MeasureText($label, $axisFont).width
+    $textBmp = new-object System.Drawing.Bitmap $labelH, $labelW 
+    #$textgraphics.TranslateTransform($labelH,0)
+    $textGraphics = [System.Drawing.Graphics]::FromImage($textbmp) 
+    $textGraphics.RotateTransform(90)
+    
+    $textGraphics.DrawString(
+        $label,
+        $axisFont,
+        $brushFg,
+        0,
+        - $labelH
+    )
 
 
-#
-$labelx = $yAxisSize.Width + 10 + ($label-$minXvalue)/($maxXvalue-$minXvalue)*($bmp.Width - $y2AxisSize.width - 10 - $yAxisSize.width - 10)
-$labely =$bmp.Height - $xAxisSize.width
-<#
+    #
+    $labelx = $yAxisSize.Width + 10 + ($label - $minXvalue) / ($maxXvalue - $minXvalue) * ($bmp.Width - $y2AxisSize.width - 10 - $yAxisSize.width - 10)
+    $labely = $bmp.Height - $xAxisSize.width
+    <#
 
 $currPen = New-Object System.Drawing.Pen $brushRed, 1
 
@@ -86,7 +87,7 @@ $graphics.DrawRectangle(
 )
 #>
 
-$graphics.DrawImage($textBmp,$labelx,$labely)
+    $graphics.DrawImage($textBmp, $labelx, $labely)
 }
 
 $MemoryStream = New-Object System.IO.MemoryStream

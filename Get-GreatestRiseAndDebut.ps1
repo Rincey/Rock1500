@@ -14,3 +14,13 @@ $HighestDebut | Select-Object title,artist,rank | Format-List
 "
 Highest Rise:"
 $HighestRise[0] | Select-Object title,artist,Rise,rank,rankOneYearAgo | Format-List
+
+
+$BiggestFall = $HighestRise | 
+Where-Object rankoneyearago -ne '' | 
+Select-Object artist,title,@{L='Fall';E={0-$_.rise}},@{L="Shift";E={"#$($_.rankoneyearago) → #$($_.rank)"}} | 
+Sort-Object -Descending fall | 
+Select-Object -First 20 
+
+$BiggestFall | Out-GridView
+$ErrorActionPreference ="Continue"

@@ -17,6 +17,7 @@ foreach ($track in $AlreadyPlayed) {
 $data = $hash.GetEnumerator() | Where-Object name -ne '' | Sort-Object name 
 
 Add-Type -AssemblyName System.Drawing
+add-type -AssemblyName system.windows.Forms
 
 #set up graphic variables
 $bmp = new-object System.Drawing.Bitmap 1000, 500 
@@ -95,31 +96,6 @@ for ($i = 0; $i -le $yStep; $i++) {
         [int](($bmp.Height - $xAxisSize.Width) - $i * ($bmp.Height - $xAxisSize.Width - $titleSize.Height) / $yStep)
     )
 }
-$textBmp = new-object System.Drawing.Bitmap 100, 50 
-$textGraphics = [System.Drawing.Graphics]::FromImage($textbmp) 
-$textGraphics.DrawString(
-    "1980",
-    $axisFont,
-    $brushFg,
-    0,
-    0
-)
-$textGraphics.rotatetransform(270)
-$graphics.DrawImage($textBmp,500,100)
-
-<#
-[single]$pointWidth = 4
-[single]$pointHeight = $pointWidth
-$graphics.DrawEllipse(
-    $currPen,
-    [single]500 - $pointWidth / 2,
-    [single]100 - $pointHeight / 2,
-    [single]$pointWidth,
-    [single]$pointHeight
-)
-#>
-# REWORK HERE. COLUMNS NOT POINTS
-#  
 
 #get date string into datetime & reverse order (oldest first) of data
 #foreach ($secureScore in $secureScores) {
@@ -127,115 +103,68 @@ $graphics.DrawEllipse(
 #}
 #[array]::Reverse($SecureScores)
 
-[int]$maxXvalue = $data[-1].name
-[int]$minXvalue = $data[0].name
-
+[int]$maxXvalue = $data[-1].name 
+[int]$minXvalue = $data[0].name 
+$maxXvalue = $maxXvalue + 1
+$minXvalue = $minXvalue - 1
 $xRange = $maxXvalue - $minXvalue
 
 #draw X axis values, and tick marks
 #
 # THIS SECTION NEEDS REWORK - HISTOGRAM NOW, NOT TIME SERIES
 #
-$xStep = 10
+$xStep = 2
 
-$i = 0
-$xLabel = $minXvalue + ($i * $xRange / $xStep) 
-$graphics.DrawString(
-    $xlabel, 
-    $axisfont, 
-    $brushFg, 
-    [int](($yAxisSize.Width + $i * ($bmp.Width - 10 - $yAxisSize.Width - $y2AxisSize.width) / $xStep)), 
-    [int](($bmp.Height - $xAxisSize.Width) + 10)
-)
-$graphics.DrawLine(
-    $pen, 
-    $yAxisSize.Width + 10, 
-    $bmp.Height - $xAxisSize.width - 4, 
-    $yAxisSize.Width + 10, 
-    $bmp.Height - $xAxisSize.width + 4
-)
+for ($label = $minXvalue; $label -lt $maxXvalue; $label += $xStep) {
+    $labelH = [System.Windows.Forms.TextRenderer]::MeasureText($label, $axisFont).Height
+    $labelW = [System.Windows.Forms.TextRenderer]::MeasureText($label, $axisFont).width
+    $textBmp = new-object System.Drawing.Bitmap $labelH, $labelW 
+         
+    $textGraphics = [System.Drawing.Graphics]::FromImage($textbmp) 
+    $textGraphics.RotateTransform(90)
     
-
-$xLabel = $minXvalue + ($i * $xRange / $xStep) 
-$graphics.DrawString(
-    $xlabel, 
-    $axisfont, 
-    $brushFg, 
-    [int](($yAxisSize.Width + $i * ($bmp.Width - 10 - $yAxisSize.Width - $y2AxisSize.width) / $xStep) `
-            - [System.Windows.Forms.TextRenderer]::MeasureText($xLabel, $axisFont).width / 2), 
-    [int](($bmp.Height - $xAxisSize.Width) + 10)
-)
-$graphics.DrawLine(
-    $pen, 
-    [int]($yAxisSize.Width + $i * ($bmp.Width - 10 - $yAxisSize.Width - $y2AxisSize.width) / $xStep), 
-    $bmp.Height - $xAxisSize.width - 4, 
-    [int]($yAxisSize.Width + $i * ($bmp.Width - 10 - $yAxisSize.Width - $y2AxisSize.width) / $xStep), 
-    $bmp.Height - $xAxisSize.width + 4
-)
-
-for ($i = 1; $i -le ($xStep - 1); $i++) {
-    $xLabel = $minXvalue + ($i * $xRange / $xStep) 
-    $graphics.DrawString(
-        $xlabel, 
-        $axisfont, 
-        $brushFg, 
-        [int](($yAxisSize.Width + $i * ($bmp.Width - 10 - $yAxisSize.Width - $y2AxisSize.width) / $xStep) `
-                - [System.Windows.Forms.TextRenderer]::MeasureText($xLabel, $axisFont).width), 
-        [int](($bmp.Height - $xAxisSize.Width) + 10)
+    $textGraphics.DrawString(
+        $label,
+        $axisFont,
+        $brushFg,
+        0,
+        - $labelH
     )
-    $graphics.DrawLine(
-        $pen, 
-        [int]($yAxisSize.Width + $i * ($bmp.Width - 10 - $yAxisSize.Width - $y2AxisSize.width) / $xStep), 
-        $bmp.Height - $xAxisSize.width - 4, 
-        [int]($yAxisSize.Width + $i * ($bmp.Width - 10 - $yAxisSize.Width - $y2AxisSize.width) / $xStep), 
-        $bmp.Height - $xAxisSize.width + 4
-    )
+
+
+    #
+    $labelx = $yAxisSize.Width + 10 + ($label - $minXvalue) / ($xRange) * ($bmp.Width - 20 - $yAxisSize.width )
+    $labely = $bmp.Height - $xAxisSize.width
+ 
+
+    $graphics.DrawImage($textBmp, $labelx, $labely)
 }
-$i = $xStep
-$xLabel = $minXvalue + ($i * $xRange / $xStep) 
-$graphics.DrawString(
-    $xlabel, 
-    $axisfont, 
-    $brushFg, 
-    [int](($yAxisSize.Width + $i * ($bmp.Width - 10 - $yAxisSize.Width - $y2AxisSize.width) / $xStep) `
-            - [System.Windows.Forms.TextRenderer]::MeasureText($xLabel, $axisFont).width), 
-    [int](($bmp.Height - $xAxisSize.Width) + 10)
-)
-$graphics.DrawLine(
-    $pen, 
-    [int]($yAxisSize.Width + $i * ($bmp.Width - 10 - $yAxisSize.Width - $y2AxisSize.width) / $xStep), 
-    $bmp.Height - $xAxisSize.width - 4, 
-    [int]($yAxisSize.Width + $i * ($bmp.Width - 10 - $yAxisSize.Width - $y2AxisSize.width) / $xStep), 
-    $bmp.Height - $xAxisSize.width + 4
-)
 
-$currPen = New-Object System.Drawing.Pen $brushRed, 1
-
-
+#
 #draw data points as small circles, & capture points into array
+
 foreach ($item in $data) {
     $xFraction = ([int]$item.name - $minXvalue) / $xRange
-    $xPos = $xFraction * ($bmp.Width - $yAxisSize.Width - 20 - $y2AxisSize.width) + $yAxisSize.Width + 10
+    $xPos = $xFraction * ($bmp.Width - $yAxisSize.Width - 20 ) + $yAxisSize.Width + 10 + $labelh /2
 
     $yCurrFraction = ([int]$item.value - $minYvalue) / ($maxYvalue - $minYvalue)
     $yCurrPos = $yCurrFraction * ($titleSize.Height - ($bmp.Height - $xAxisSize.Width)) + ($bmp.Height - $xAxisSize.Width)
 
     [single]$pointWidth = 4
-    [single]$pointHeight = $pointWidth
 
     #
     # REWORK HERE. COLUMNS NOT POINTS
     #  
-    $graphics.DrawEllipse(
-        $currPen,
+    $graphics.FillRectangle(
+        $brushBlue,
         [single]$xPos - $pointWidth / 2,
-        [single]$yCurrPos - $pointHeight / 2,
+        [single]$yCurrPos,
         [single]$pointWidth,
-        [single]$pointHeight
+        [single]$bmp.Height - $xAxisSize.width -$yCurrPos
     )
 
 }
-
+#>
 
 $graphics.Dispose() 
 
