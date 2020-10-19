@@ -145,22 +145,27 @@ for ($label = $minXvalue; $label -lt $maxXvalue; $label += $xStep) {
 
 foreach ($item in $data) {
     $xFraction = ([int]$item.name - $minXvalue) / $xRange
-    $xPos = $xFraction * ($bmp.Width - $yAxisSize.Width - 20 ) + $yAxisSize.Width + 10 + $labelh /2
+    $xPos = $xFraction * ($bmp.Width - $yAxisSize.Width - 20 ) + $yAxisSize.Width + 10 + $labelh / 2
 
     $yCurrFraction = ([int]$item.value - $minYvalue) / ($maxYvalue - $minYvalue)
     $yCurrPos = $yCurrFraction * ($titleSize.Height - ($bmp.Height - $xAxisSize.Width)) + ($bmp.Height - $xAxisSize.Width)
 
     [single]$pointWidth = 4
-
+    if ($item.value -eq ($data.value | Measure-Object  -Maximum).Maximum) {
+        $bar = $brushRed
+    }
+    else {
+        $bar = $brushBlue
+    }
     #
     # REWORK HERE. COLUMNS NOT POINTS
     #  
     $graphics.FillRectangle(
-        $brushBlue,
+        $bar,
         [single]$xPos - $pointWidth / 2,
         [single]$yCurrPos,
         [single]$pointWidth,
-        [single]$bmp.Height - $xAxisSize.width -$yCurrPos
+        [single]$bmp.Height - $xAxisSize.width - $yCurrPos
     )
 
 }

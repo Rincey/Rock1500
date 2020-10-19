@@ -4,13 +4,13 @@ ConvertFrom-Json
 
     
 $countdown = $rawcountdown 
-    
+$topnumber = 5    
 $topTen = $countdown |
 Group-Object artist |
 sort-object count -Descending
     
 $data = $topten | 
-Where-Object { $_.count -ge $topten[9].count } | 
+Where-Object { $_.count -ge $topten[$topnumber - 1].count } | 
 Select-Object Name, Count  
 
 
@@ -29,7 +29,7 @@ $font = new-object System.Drawing.Font Arial, $fontSize
 $brushBg = [System.Drawing.Brushes]::White 
 $brushFg = [System.Drawing.Brushes]::Black 
 
-$graphTitle = "Top Ten Artists"
+$graphTitle = "Top $topnumber Artists"
 $titleSize = [System.Windows.Forms.TextRenderer]::MeasureText($graphTitle, $font)
 $pen = New-Object System.Drawing.Pen $brushFg, 2
 
@@ -49,7 +49,15 @@ $brushes = @(
     [System.Drawing.Brushes]::Chocolate,
     [System.Drawing.Brushes]::CornflowerBlue,
     [System.Drawing.Brushes]::Cornsilk,
-    [System.Drawing.Brushes]::Crimson
+    [System.Drawing.Brushes]::Crimson,
+    [System.Drawing.Brushes]::OrangeRed,
+    [System.Drawing.Brushes]::YellowGreen,
+    [System.Drawing.Brushes]::Salmon,
+    [System.Drawing.Brushes]::SeaGreen,
+    [System.Drawing.Brushes]::Sienna,
+    [System.Drawing.Brushes]::Tan,
+    [System.Drawing.Brushes]::Thistle,
+    [System.Drawing.Brushes]::Violet
 
 )
 
