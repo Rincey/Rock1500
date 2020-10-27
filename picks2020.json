@@ -1,0 +1,169 @@
+{
+    "picks": {
+        "Scott's Picks #1": [
+            {
+                "artist": "Black Sabbath",
+                "title": "N.I.B."
+            },
+            {
+                "artist": "Slayer",
+                "title": "Raining Blood"
+            },
+            {
+                "artist": "Black Sabbath",
+                "title": "Snowblind"
+            },
+            {
+                "artist": "Led Zeppelin",
+                "title": "Achilles Last Stand"
+            },
+            {
+                "artist": "Metallica",
+                "title": "The Outlaw Torn"
+            },
+            {
+                "artist": "Black Sabbath",
+                "title": "Fairies Wear Boots"
+            },
+            {
+                "artist": "Johnny Cash",
+                "title": "Hurt"
+            },
+            {
+                "artist": "Led Zeppelin",
+                "title": "Stairway to Heaven"
+            },
+            {
+                "artist": "Led Zeppelin",
+                "title": "Immigrant Song"
+            },
+            {
+                "artist": "Iron Maiden",
+                "title": "Run To The Hills"
+            },
+            {
+                "artist": "Metallica",
+                "title": "One"
+            },
+            {
+                "artist": "Pantera",
+                "title": "Cemetery Gates"
+            },
+            {
+                "artist": "Metallica",
+                "title": "Fade to Black"
+            },
+            {
+                "artist": "Tool",
+                "title": "Lateralus"
+            },
+            {
+                "artist": "Slipknot",
+                "title": "Duality"
+            },
+            {
+                "artist": "Pantera",
+                "title": "Cowboys from Hell"
+            },
+            {
+                "artist": "Tool",
+                "title": "Pneuma"
+            },
+            {
+                "artist": "Tool",
+                "title": "Vicarious"
+            },
+            {
+                "artist": "Metallica",
+                "title": "For Whom the Bell Tolls"
+            },
+            {
+                "artist": "Shihad",
+                "title": "You Again"
+            }
+        ],
+        "Scott's Picks #2":
+        [
+            {
+                "artist": "8 foot Sativa",
+                "title": "8 foot Sativa"
+            },
+            {
+                "artist": "Sepultura",
+                "title": "Roots Bloody Roots"
+            },  
+            {
+                "artist": "Pantera",
+                "title": "Fucking Hostile"
+            },  
+            {
+                "artist": "Korn",
+                "title": "Twisted Transistor"
+            },  
+            {
+                "artist": "Tool",
+                "title": "7empest"
+            },  
+            {
+                "artist": "Black Sabbath",
+                "title": "Black Sabbath"
+            },  
+            {
+                "artist": "Slipknot",
+                "title": "The Negative One"
+            },  
+            {
+                "artist": "Led Zeppelin",
+                "title": "No Quarter"
+            },  
+            {
+                "artist": "Metallica",
+                "title": "Battery"
+            },  
+            {
+                "artist": "Devilskin",
+                "title": "Little Pills"
+            },  
+            {
+                "artist": "Five Finger Death Punch",
+                "title": "Jeckyll & Hyde"
+            },  
+            {
+                "artist": "Godsmack",
+                "title": "I Stand Alone"
+            },  
+            {
+                "artist": "Megadeth",
+                "title": "Peace Sells But Who's Buying"
+            },  
+            {
+                "artist": "Lamb Of God",
+                "title": "Laid to Rest"
+            },  
+            {
+                "artist": "Probot",
+                "title": "Shake Your Blood"
+            },
+            {
+                "artist": "Soundgarden",
+                "title": "Jesus Christ Pose"
+            },
+            {
+                "artist": "Stone Sour",
+                "title": "Wicked Game"
+            },
+            {
+                "artist": "Push Push",
+                "title": "Song 27"
+            },
+            {
+                "artist": "Twisted Sister",
+                "title": "We're Not Gonna Take It"
+            },
+            {
+                "artist": "Alien Weaponry",
+                "title": "ru ana te whenua"
+            }
+        ]
+    }
+}

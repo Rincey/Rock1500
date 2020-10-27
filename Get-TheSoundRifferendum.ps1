@@ -6,4 +6,4 @@ if ($PSScriptRoot) {
 else {
     $reportfolder = $psEditor.GetEditorContext().CurrentFile.Path.replace($psEditor.GetEditorContext().CurrentFile.Path.split("\")[-1], "")
 }
-$AlreadyPlayed | Export-Csv "$reportfolder\Rifferendum2020.csv" -NoTypeInformation
+$AlreadyPlayed | Export-Csv "$reportfolder\SoundHallofFame2020.csv" -NoTypeInformation
