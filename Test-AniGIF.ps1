@@ -35,6 +35,16 @@ $newBytes = New-Object -TypeName 'System.Collections.Generic.List[byte]'
 $newBytes.AddRange([byte[]]$bytes[0..12]);
 $newBytes.AddRange($applicationExtension);
 $newBytes.AddRange([byte[]]$bytes[13..($bytes.count)])
+
+<# 
+DELAY 
+Hex: 21  f9 04 01 00 00
+Dec: 33 249 04 01 00 00
+change to
+Hex: 21  f9 04 01  c8 00 (2 seconds)
+Dec: 33 249 04 01 200 00
+#>
+
 [IO.file]::WriteAllBytes($filename,$newBytes)      
 
 
