@@ -4,7 +4,7 @@ ConvertFrom-Json
 
     
 $countdown = $rawcountdown 
-$topnumber = 20
+$topnumber = 5
 $topTen = $countdown |
 Group-Object artist |
 sort-object count -Descending

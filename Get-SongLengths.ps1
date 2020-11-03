@@ -47,7 +47,7 @@ $AlreadyPlayed = ((Invoke-WebRequest https://radio-api.mediaworks.nz/comp-api/v1
 
 foreach ($track in $AlreadyPlayed) {
 
-    if ($data.rank -notcontains $track.rank) {
+    if ($($data | Select-Object -ExpandProperty rank) -notcontains $track.rank) {
         $spotifyTrack = Find-SpotifyTrack -filter "$($track.title) $($track.artist) $($track.album)" -Limit 1
         
         "$($track.rank) $($track.title) $($track.artist) $($spotifyTrack.count)"
