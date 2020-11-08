@@ -1,4 +1,3 @@
-$days = 1..9
 
 if ($PSScriptRoot) {
     $reportfolder = $PSScriptRoot
@@ -43,9 +42,27 @@ Dec: 33 249 04 01 00 00
 change to
 Hex: 21  f9 04 01  c8 00 (2 seconds)
 Dec: 33 249 04 01 200 00
+Dec: 33 249 04 01 00 02 (5.12 sec)
 #>
+$find    = "33", "249", "4", "1", "0", "0"
+$replace = "33", "249", "4", "1", "100", "0"
+$replacelast = "33", "249", "4", "1", "0", "2"
+$separator = " "
 
-[IO.file]::WriteAllBytes($filename,$newBytes)      
+$newBytesJoined = $newBytes -join $separator
+$findJoined = $find -join $separator
+$replaceJoined = $replace -join $separator
+$replaceLastJoined = $replaceLast -join $separator
+$lastIndex = (select-string $findJoined -InputObject $newBytesJoined -AllMatches).matches[-1].index
+$newBytesJoined = $newBytesJoined.Remove($lastIndex,$findJoined.Length)
+$newBytesJoined = $newBytesJoined.insert($lastIndex,$replaceLastJoined)
+$newBytesReplaced = $newBytesJoined.replace($findJoined,$replaceJoined)
+[byte[]]$newArray = $newBytesReplaced -split $separator
+
+#[byte[]]$newArray = ($newBytes -join $separator).Replace($find -join $separator, $replace -join $separator) -split $separator
+
+
+[IO.file]::WriteAllBytes($filename,$newArray)      
 
 
 
