@@ -18,7 +18,14 @@ Function Get-TotalWeekDays {
     return    $i
 } 
 
-$MyVotes = get-content .\picks2020.json | ConvertFrom-Json 
+if ($PSScriptRoot) {
+    $reportfolder = $PSScriptRoot
+}
+else {
+    $reportfolder = $psEditor.GetEditorContext().CurrentFile.Path.replace($psEditor.GetEditorContext().CurrentFile.Path.split("\")[-1], "")
+}
+
+$MyVotes = get-content $reportfolder\picks2021.json | ConvertFrom-Json 
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 $AlreadyPlayed = ((Invoke-WebRequest https://radio-api.mediaworks.nz/comp-api/v1/countdown/therock -UseBasicParsing).content | convertfrom-json)
 $count = 0 

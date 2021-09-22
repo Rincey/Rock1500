@@ -10,3 +10,10 @@ else {
 
 $creds = get-content "$scriptfolder\..\genius.json" | ConvertFrom-Json
 
+$uathURL = "https://api.genius.com/oauth/authorize"
+
+$client_id = $creds.client_id
+$redirect_uri = "https://localhost"
+$scope = ""
+state: A value that will be returned with the code redirect for maintaining arbitrary state through the authorization process
+response_type: Always "code"
