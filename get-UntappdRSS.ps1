@@ -37,8 +37,8 @@ foreach ($link in $result) {
 
     $beer = $link.title -replace "Scott w. is drinking ", ""
     $beer = $beer -replace " at Untappd at Home", ""
-
-    Write-Output "$beer,$rating"
+    $date = get-date ($link.pubDate) -Format "dd/MM/yyyy"
+    Write-Output "$date,$beer,$rating"
 
 } 
 
