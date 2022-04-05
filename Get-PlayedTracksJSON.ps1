@@ -40,7 +40,7 @@ Vote Set '$($VoteSet)':"
         $song.artist = $track.artist
         $song.title = $track.title
 
-        if ($MyVotes.picks.$VoteSet -match $song) {
+        if ($MyVotes.picks.$VoteSet -like $song) {
 $VoteSetPlayed += $song
 $countdownday = Get-TotalWeekDays -Start $($AlreadyPlayed[-1].timestamp.split(" ")[0]) -End $($track.timestamp.split(" ")[0])
             "`"$($song.artist) - $($song.title)`"

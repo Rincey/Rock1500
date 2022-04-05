@@ -1,10 +1,14 @@
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
-$rawcountdown = (Invoke-WebRequest https://radio-api.mediaworks.nz/comp-api/v1/countdown/therock -UseBasicParsing).content | 
+
+$url = "https://radio-api.mediaworks.nz/comp-api/v1/countdown/therock"
+$url =  "https://radio-api.mediaworks.nz/comp-api/v1/countdown/sound"
+
+$rawcountdown = (Invoke-WebRequest $URL  -UseBasicParsing).content | 
 ConvertFrom-Json
 
     
 $countdown = $rawcountdown 
-$topnumber = 5
+$topnumber = 10
 $topTen = $countdown |
 Group-Object artist |
 sort-object count -Descending
