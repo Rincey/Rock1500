@@ -1,4 +1,4 @@
-$workingFolder = 'E:\Working Photos for TIme Lapse\2022-02-09'
+$workingFolder = 'E:\Working Photos for TIme Lapse\_Alt Angle\06 Kitchen'
 $files = Get-ChildItem -path $workingFolder -File |sort-object Name
 
 foreach ($file in $files) {
