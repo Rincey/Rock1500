@@ -1,0 +1,169 @@
+{
+    "picks": {
+        "Scott's Picks #2": [
+            {
+                "artist": "Lamb of God",
+                "title": "Laid to Rest"
+            },
+            {
+                "artist": "Lamb of God",
+                "title": "Redneck"
+            },
+            {
+                "artist": "Lamb of God",
+                "title": "Walk with me in Hell"
+            },
+            {
+                "artist": "Lamb of God",
+                "title": "512"
+            },
+            {
+                "artist": "Led Zeppelin",
+                "title": "Achilles Last Stand"
+            },
+            {
+                "artist": "Kyuss",
+                "title": "Green Machine"
+            },
+            {
+                "artist": "Shihad",
+                "title": "You Again"
+            },
+            {
+                "artist": "Metallica",
+                "title": "One"
+            },
+            {
+                "artist": "Metallica",
+                "title": "The Outlaw Torn"
+            },
+            {
+                "artist": "Tool",
+                "title": "Lateralus"
+            },
+            {
+                "artist": "Orange Goblin",
+                "title": "Sons of Salem"
+            },
+            {
+                "artist": "Gnome",
+                "title": "Ambrosius"
+            },
+            {
+                "artist": "Korn",
+                "title": "Twisted Transistor"
+            },
+            {
+                "artist": "Slayer",
+                "title": "Raining Blood"
+            },
+            {
+                "artist": "Black Sabbath",
+                "title": "N.I.B."
+            },
+            {
+                "artist": "Pantera",
+                "title": "Floods"
+            },
+            {
+                "artist": "Led Zeppelin",
+                "title": "stairway to heaven"
+            },
+            {
+                "artist": "black label society",
+                "title": "Funeral Bell"
+            },
+            {
+                "artist": "Blindspott",
+                "title": "Nil by Mouth"
+            },
+            {
+                "artist": "Iron Maiden",
+                "title": "The Number of the Beast"
+            }
+        ],
+        "Scott's Picks #1":
+        [
+            {
+                "artist": "Meshuggah",
+                "title": "Bleed"
+            },
+            {
+                "artist": "Alien Weaponry",
+                "title": "Kai Tangata"
+            },  
+            {
+                "artist": "Johnny Cash",
+                "title": "Hurt"
+            },  
+            {
+                "artist": "Gojira",
+                "title": "Stranded"
+            },  
+            {
+                "artist": "Deep Purple",
+                "title": "Child in Time"
+            },  
+            {
+                "artist": "Slipknot",
+                "title": "The Negative One"
+            },  
+            {
+                "artist": "Orange Goblin",
+                "title": "Sons of Salem"
+            },  
+            {
+                "artist": "probot",
+                "title": "Shake your blood"
+            },  
+            {
+                "artist": "Drowning Pool",
+                "title": "Bodies"
+            },  
+            {
+                "artist": "Down",
+                "title": "Lifer"
+            },  
+            {
+                "artist": "Godsmack",
+                "title": "Awake"
+            },  
+            {
+                "artist": "Soundgarden",
+                "title": "Jesus Christ Pose"
+            },
+            {
+                "artist": "Sound City ft Corey Taylor",
+                "title": "From Can to Can't"
+            },
+            {
+                "artist": "Tool",
+                "title": "Forty Six and Two"
+            },
+            {
+                "artist": "static-X",
+                "title": "Push it"
+            },
+            {
+                "artist": "fear factory",
+                "title": "dog day sunrise"
+            },
+            {
+                "artist": "Danzig",
+                "title": "Mother"
+            },
+            {
+                "artist": "Ministry",
+                "title": "jesus built my hotrod"
+            },
+            {
+                "artist": "Megadeth",
+                "title": "Peace Sells But Who's Buying"
+            },
+            {
+                "artist": "Machine Head",
+                "title": "Locust"
+            }
+        ]
+    }
+}
