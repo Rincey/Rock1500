@@ -127,13 +127,7 @@ Else {
     }
     
     foreach ($item in ($ht.GetEnumerator() | Sort-Object value -Descending)) {
-    if (
-        ($item.name -notin $KnownLetters ) -and
-        ($item.name -notin $ExcludedLetters) -and
-        ($item.value -ne 0)
-        ) {
-        Write-Output "$($item.name)`t$([math]::round($item.value*100/$($words.count),0))%"
-        }
+        Write-Output "$($item.name)`t$($item.value)"
     }
 #>
 
