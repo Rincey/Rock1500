@@ -1,0 +1,168 @@
+{
+    "picks": {
+        "Scott's Picks": [
+            {
+                "artist": "Led Zeppelin",
+                "title": "Achilles Last Stand"
+            },
+            {
+                "artist": "Orange Goblin",
+                "title": "Sons Of Salem "
+            },
+            {
+                "artist": "Metallica",
+                "title": "The Outlaw Torn"
+            },
+            {
+                "artist": "Red Fang",
+                "title": "Prehistoric Dog"
+            },
+            {
+                "artist": "Korn",
+                "title": "Twisted Transistor"
+            },
+            {
+                "artist": "Slipknot",
+                "title": "Duality"
+            },
+            {
+                "artist": "Tool",
+                "title": "Lateralus"
+            },
+            {
+                "artist": "Probot",
+                "title": "Shake Your Blood"
+            },
+            {
+                "artist": "Lamb Of God",
+                "title": "Redneck"
+            },
+            {
+                "artist": "Slayer",
+                "title": "Raining Blood"
+            },
+            {
+                "artist": "Meshuggah",
+                "title": "Bleed"
+            },
+            {
+                "artist": "Gojira",
+                "title": "Stranded"
+            },
+            {
+                "artist": "Alien Weaponry",
+                "title": "Kai Tangata"
+            },
+            {
+                "artist": "Johnny Cash",
+                "title": "Hurt"
+            },
+            {
+                "artist": "Shihad",
+                "title": "You Again"
+            },
+            {
+                "artist": "Kyuss",
+                "title": "Green Machine"
+            },
+            {
+                "artist": "His Masters Voice",
+                "title": "Woman"
+            },
+            {
+                "artist": "Mastodon",
+                "title": "Blood And Thunder"
+            },
+            {
+                "artist": "Black Sabbath",
+                "title": "N.I.B."
+            },
+            {
+                "artist": "Pantera",
+                "title": "Planet Caravan"
+            }
+        ],
+        "Charlie's Picks": [
+            {
+                "artist": "Metallica",
+                "title": "Master Of Puppets"
+            },
+            {
+                "artist": "Metallica",
+                "title": "Enter Sandman"
+            },
+            {
+                "artist": "Metallica",
+                "title": "For Whom The Bell Tolls"
+            },
+            {
+                "artist": "Metallica",
+                "title": "Nothing Else Matters"
+            },
+            {
+                "artist": "Metallica",
+                "title": "Battery"
+            },
+            {
+                "artist": "Led Zeppelin",
+                "title": "Achilles Last Stand"
+            },
+            {
+                "artist": "Metallica",
+                "title": "King Nothing"
+            },
+            {
+                "artist": "Metallica",
+                "title": "Fade To Black"
+            },
+            {
+                "artist": "Metallica",
+                "title": "Sad But True"
+            },
+            {
+                "artist": "Metallica",
+                "title": "Orion"
+            },
+            {
+                "artist": "Metallica",
+                "title": "One"
+            },
+            {
+                "artist": "Metallica",
+                "title": "Sanitarium"
+            },
+            {
+                "artist": "Soundgarden",
+                "title": "Black Hole Sun"
+            },
+            {
+                "artist": "Iron Maiden",
+                "title": "2 Minutes To Midnight"
+            },
+            {
+                "artist": "Iron Maiden",
+                "title": "Aces High"
+            },
+            {
+                "artist": "Linkin Park",
+                "title": "Lost"
+            },
+            {
+                "artist": "Linkin Park",
+                "title": "In The End"
+            },
+            {
+                "artist": "Linkin Park",
+                "title": "Numb"
+            },
+            {
+                "artist": "Foo Fighters",
+                "title": "Everlong"
+            },
+            {
+                "artist": "Nirvana",
+                "title": "Smells Like Teen Spirit"
+            }
+        ]
+    }
+}
