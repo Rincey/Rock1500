@@ -23,9 +23,18 @@ if (!($latestOnly)) {
         $countdownyear
         $file | ForEach-Object {
             $_ | Add-Member -MemberType NoteProperty -Name 'Year' -Value $countdownyear
-            if ($_.rankOneYearAgo -is [int]) {
+    
+            $number = $_.rankOneYearAgo -as [int]  
+            if ($number -ne $null) {
                 $_ | Add-Member -MemberType NoteProperty -Name deltaRank -Value ([int]$_.rankOneYearAgo - [int]$_.rank)
             }
+            else {
+                $_ | Add-Member -MemberType NoteProperty -Name deltaRank -Value "N/A"
+            }
+
+
+
+
         }
     
         $allcountdowns.add($file)
@@ -37,9 +46,13 @@ if (!($latestOnly)) {
 $thisyear = ((Invoke-WebRequest https://radio-api.mediaworks.nz/comp-api/v1/countdown/therock -UseBasicParsing).content | convertfrom-json)
 $thisyear | ForEach-Object {
     $_ | Add-Member -MemberType NoteProperty -Name 'Year' -Value (get-date).Year
-    if ($_.rankOneYearAgo -is [int]) {
-        $_ | Add-Member -MemberType NoteProperty -Name deltaRank -Value ([int]$_.rankOneYearAgo - [int]$_.rank)
-    }
+    $number = $_.rankOneYearAgo -as [int]  
+            if ($number -ne $null) {
+                $_ | Add-Member -MemberType NoteProperty -Name deltaRank -Value ([int]$_.rankOneYearAgo - [int]$_.rank)
+            }
+            else {
+                $_ | Add-Member -MemberType NoteProperty -Name deltaRank -Value "N/A"
+            }
 }
 $allcountdowns.add($thisyear)
 $allcountdowns = ($allcountdowns | ForEach-Object { $_ })
@@ -51,16 +64,16 @@ foreach ($year in $years) {
     $highestDebut = $allcountdowns | Where-Object { ($_.year -eq $year) -and ($_.rankOneYearAgo -eq "DEBUT") } | select-Object -first 1
     $numReentries = $allcountdowns | Where-Object { ($_.year -eq $year) -and (($_.rankOneYearAgo -eq "RE-ENTRY") -or ($_.rankOneYearAgo -eq "R/E")) } | Measure-Object | select-Object -ExpandProperty Count
     $highestReentry = $allcountdowns | Where-Object { ($_.year -eq $year) -and (($_.rankOneYearAgo -eq "RE-ENTRY") -or ($_.rankOneYearAgo -eq "R/E")) } | select-Object -first 1
-    $highestJump = $allcountdowns | Where-Object { ($_.year -eq $year) } | sort-object -Descending deltaRank | select-Object -first 1
-    $highestFall = $allcountdowns | Where-Object { ($_.year -eq $year) } | sort-object -Descending deltaRank | select-Object -Last 1
+    $highestJump = $allcountdowns | Where-Object { ($_.year -eq $year) -and ($_.deltaRank -ne "N/A")} | sort-object -Descending deltaRank | select-Object -first 1
+    $highestFall = $allcountdowns | Where-Object { ($_.year -eq $year) -and ($_.deltaRank -ne "N/A")} | sort-object -Descending deltaRank | select-Object -last 1
 
     "Year: $year"
     "Number of Debuts: $numDebuts"
     "Highest Debut: #$($highestDebut.rank) -  $($highestDebut.title) - $($highestDebut.artist)"
     "Number of Re-entries: $numReentries"
     "Highest Re-entry: #$($highestReentry.rank) -  $($highestReentry.title) - $($highestReentry.artist)"
-    "Biggest Jump: #$($highestJump.rank) (from $($highestJump.rankOneYearAgo))  $($highestJump.title) - $($highestJump.artist)"
-    "Biggest Fall: #$($highestFall.rank) (from $($highestFall.rankOneYearAgo))  $($highestFall.title) - $($highestFall.artist)"
+    "Biggest Jump: $($highestjump.deltarank) ($($highestJump.rankOneYearAgo) to $($highestJump.rank))  $($highestJump.title) - $($highestJump.artist)"
+    "Biggest Fall: $($highestFall.deltarank) ($($highestFall.rankOneYearAgo) to $($highestFall.rank))  $($highestFall.title) - $($highestFall.artist)"
     if ($year -eq ((get-date).year)) {
         "(So far!!)"
     }

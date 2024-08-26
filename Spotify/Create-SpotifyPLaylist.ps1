@@ -5,10 +5,13 @@
 #$Rock1500_2018 = (Get-Content '.\Full 2018.csv' | ConvertFrom-Csv)
 
 #$Rock1500_2018 = (Get-Content ".\songs for richard.csv" | ConvertFrom-Csv)
-$Rock1500_2018 = (Get-Content ".\moonsongs.csv" | ConvertFrom-Csv)
+$Rock1500_2018 = (Get-Content ".\spotify\moonsongs.csv" | ConvertFrom-Csv)
 
 
-Connect-Spotify -ClientIdSecret (Import-Clixml ..\..\spotify.credential2) -KeepCredential -Debug -RedirectUri http://localhost:8001
+Connect-Spotify -ClientIdSecret (Import-Clixml "E:\Git Repositories\spotify.credential2") -KeepCredential -Debug -RedirectUri http://localhost:8001
+
+Connect-Spotify  -KeepCredential -Debug -RedirectUri http://localhost:8001
+
 
 $playlist = Get-SpotifyPlaylist -Name "Moon Songs" -My
 
