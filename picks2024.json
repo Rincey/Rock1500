@@ -1,7 +1,6 @@
 {
     "picks": {
-        "Scott's Picks": [
-            {
+        "My Picks": [{
                 "artist": "Led Zeppelin",
                 "title": "Achilles Last Stand"
             },
@@ -82,8 +81,7 @@
                 "title": "Planet Caravan"
             }
         ],
-        "Charlie's Picks": [
-            {
+        "12y.o's Picks": [{
                 "artist": "Metallica",
                 "title": "Master Of Puppets"
             },
