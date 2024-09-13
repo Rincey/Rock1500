@@ -258,9 +258,9 @@ $total + 1
 
 $grandtotal = 0
 $powers = @{}
-for ($i = 0; $i -lt 10; $i++) {
-    $i
-    $powers[$i] = [math]::pow($i, 5)
+for ($i=0; $i -lt 10; $i++) {
+$i
+    $powers[$i] = [math]::pow($i,5)
 }
 
 for ($i = 2; $i -lt 360000; $i++) {
@@ -280,47 +280,23 @@ for ($i = 2; $i -lt 360000; $i++) {
 $grandtotal
 
 <#
-13. get the first 10 digits of the sum of these numbers
+An irrational decimal fraction is created by concatenating the positive integers:
+
+0.123456789101112131415161718192021...
+
+It can be seen that the 12th digit of the fractional part is 1.
+
+If dn represents the nth digit of the fractional part, find the value of the following expression.
+
+d1 × d10 × d100 × d1000 × d10000 × d100000 × d1000000
+
 #>
 
-$numbers = gc .\euler13.txt
-[bigint]$total = 0
-foreach ($number in $numbers) {
-    $total += [bigint]$number
+$bignumber = ""
+for ($i=0;$i -le 186000; $i++){
+    $bignumber = "$($bignumber)$i"
 }
 
-
-<# 25 find the first 1000-digit Fibonacci number
-#>
-
-
-
-
-[bigint]$FnNext = 0
-[bigint]$Fn1 = 1
-[bigint]$Fn2 = 1
-$FnIndex = 1
-$Fnlength = 0
-while ($Fnlength -lt 1000) {
-    
-    $Fnlength = $FnNext.ToString().Length
-    #"$FnIndex $fn1"
-    $FnIndex ++
-    $FnNext = $Fn1 + $Fn2
-    $Fn1 = $Fn2
-    $fn2 = $FnNext
- 
-}
-"$FnIndex $fn1"
-#execution time: 155ms
-
-<# 34.
-145 is a curious number, as 1! + 4! + 5! = 1 + 24 + 120 = 145.
-
-Find the sum of all numbers which are equal to the sum of the factorial of their digits.
-
-Note: As 1! = 1 and 2! = 2 are not sums they are not included.#>
-
-
-
+$bignumber[1], $bignumber[10], $bignumber[100], $bignumber[1000], $bignumber[10000], $bignumber[100000], $bignumber[1000000]
+#210
 

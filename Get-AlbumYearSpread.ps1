@@ -49,7 +49,9 @@ $minXvalue = $minXvalue - 1
 
 $xRange = $maxXvalue - $minXvalue
 
-$alreadyplayed = $alreadyplayed | Select-Object *, @{L = "Day"; E = { Get-TotalWeekDays -Start $($AlreadyPlayed[-1].timestamp.split(" ")[0]) -End $($_.timestamp.split(" ")[0]) } }
+$alreadyplayed | ForEach-Object {
+    $_ | Add-Member -MemberType NoteProperty -Name Day -Value (Get-TotalWeekDays -Start $($AlreadyPlayed[-1].timestamp.split(" ")[0]) -End $($_.timestamp.split(" ")[0]))
+}
 $days = $AlreadyPlayed | Select-Object  -ExpandProperty day -Unique | Sort-Object 
 foreach ($day in $days) {
     $countdown = $AlreadyPlayed | Where-Object { [int32]$_.day -le [int32]$day }
