@@ -21,7 +21,7 @@ Function Get-TotalWeekDays {
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 $AlreadyPlayed = ((Invoke-WebRequest https://radio-api.mediaworks.nz/comp-api/v1/countdown/therock -UseBasicParsing).content | convertfrom-json)
 #$AlreadyPlayed = ((Invoke-WebRequest https://radio-api.mediaworks.nz/comp-api/v1/countdown/sound -UseBasicParsing).content | convertfrom-json)
-
+$alreadyPlayed = $alreadyPlayed | ? rank
 $hash = @{}
 
 foreach ($track in $AlreadyPlayed) {
@@ -255,7 +255,7 @@ foreach ($day in $days) {
 
 }
 
-start-sleep -Seconds 5
+start-sleep -Seconds 10
 
 if ($PSScriptRoot) {
     $reportfolder = $PSScriptRoot

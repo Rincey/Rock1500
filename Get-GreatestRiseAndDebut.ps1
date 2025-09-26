@@ -22,5 +22,6 @@ Select-Object artist,title,@{L='Fall';E={0-$_.rise}},@{L="Shift";E={"#$($_.ranko
 Sort-Object -Descending fall | 
 Select-Object -First 20 
 
-#$BiggestFall | Out-GridView
+"Biggest Fall:"
+$BiggestFall[0] | fl *
 $ErrorActionPreference ="Continue"
